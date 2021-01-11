@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eventapp.beans.TicketBooking;
+import com.eventapp.beans.TicketBookingReq;
+import com.eventapp.beans.TicketBookingRes;
+import com.eventapp.beans.TicketCancelReq;
+import com.eventapp.beans.TicketCancelRes;
 import com.eventapp.service.EventService;
 
 @RestController
@@ -25,12 +28,29 @@ public class EmpController {
 	}
 
 
+	/*
+	 * @PostMapping(path="bookTicket", produces = MediaType.APPLICATION_JSON_VALUE,
+	 * consumes =MediaType.APPLICATION_JSON_VALUE ) public String book( @RequestBody
+	 * TicketBookingReq tBbean) {
+	 * eService.bookTicket(tBbean.getEventId(),tBbean.getNoOfTickets()); return
+	 * "tickets booked successfully"; }
+	 */
+	
+	
 
-	@PostMapping(path="bookTicket", 
+	@PostMapping(path="booking", 
 			produces = MediaType.APPLICATION_JSON_VALUE, 
 			consumes =MediaType.APPLICATION_JSON_VALUE )
-	public String deposit( @RequestBody TicketBooking tBbean) {
-		eService.bookTicket(tBbean.getEventId(),tBbean.getNoOfTickets());
-		return "tickets booked successfully";
+	public TicketBookingRes booking( @RequestBody TicketBookingReq bookreq) {
+		
+		return eService.bookTickets(bookreq);
+	}
+	
+	@PostMapping(path="cancel", 
+			produces = MediaType.APPLICATION_JSON_VALUE, 
+			consumes =MediaType.APPLICATION_JSON_VALUE )
+	public TicketCancelRes cancel( @RequestBody TicketCancelReq cancelreq) {
+		
+		return eService.cancelTickets(cancelreq);
 	}
 }

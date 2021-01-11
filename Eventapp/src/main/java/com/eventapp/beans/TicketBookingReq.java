@@ -1,18 +1,18 @@
 package com.eventapp.beans;
 
-public class TicketBooking {
+public class TicketBookingReq {
 
 private int eventId;
 
 private int noOfTickets;
 
-public TicketBooking(int eventId, int noOfTickets) {
+public TicketBookingReq(int eventId, int noOfTickets) {
 	
 	this.eventId = eventId;
 	this.noOfTickets = noOfTickets;
 }
 
-public TicketBooking() {}
+public TicketBookingReq() {}
 
 public int getEventId() {
 	return eventId;

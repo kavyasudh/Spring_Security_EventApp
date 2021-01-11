@@ -24,7 +24,7 @@ public class SecConfig extends  WebSecurityConfigurerAdapter{
 	private MyAuthEntryPoint authEntryPoint;
 	
 	@Autowired
-	private DetailService detailService;
+	private UserDetailsService detailService;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

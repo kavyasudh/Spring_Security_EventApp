@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "event_table")
@@ -23,6 +25,7 @@ public class Event {
 	@Column(name="eloc") 
 	private String location;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name="edate") 
 	private Date eventDate;
 	@Column(name="ediscount") 
@@ -30,14 +33,18 @@ public class Event {
 	@Column(name="No_Of_tickets") 
 	private int noOfTickets;
 	
+	private double price;
+	
+	
 	public Event() {}
-	public Event(String eventName, String location, Date eventDate, int discount, int noOfTickets) {
+	public Event(String eventName, String location, Date eventDate, int discount, int noOfTickets,double price) {
 
 		this.eventName = eventName;
 		this.location = location;
 		this.eventDate = eventDate;
 		this.discount = discount;
 		this.noOfTickets = noOfTickets;
+	    this.price=price;
 	}
 	public int getEventId() {
 		return eventId;
@@ -75,10 +82,17 @@ public class Event {
 	public void setNoOfTickets(int noOfTickets) {
 		this.noOfTickets = noOfTickets;
 	}
+	
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	@Override
 	public String toString() {
 		return "Event [eventId=" + eventId + ", eventName=" + eventName + ", location=" + location + ", eventDate="
-				+ eventDate + ", discount=" + discount + ", noOfTickets=" + noOfTickets + "]";
+				+ eventDate + ", discount=" + discount + ", noOfTickets=" + noOfTickets + ", price=" + price + "]";
 	}
 	
 	
